@@ -57,7 +57,9 @@ const Breakfast = () => {
       <div className="w-full max-w-7xl text-white flex flex-col md:flex-row items-center justify-between relative z-10 space-y-6 md:space-y-0 md:space-x-6">
         {/* Left Content */}
         <div className="md:w-1/2">
-          <h1 className="text-5xl md:text-7xl md:mb-4 font-sanchez">BREAKFAST</h1>
+          <h1 className="text-5xl md:text-7xl md:mb-4 font-sanchez">
+            BREAKFAST
+          </h1>
           <p className="text-sm md:text-md font-semibold text-justify md:mb-6">
             Breakfast, often referred to as the ‘most important meal of the
             day,’ provides essential nutrients to kick start our day. It
@@ -85,6 +87,8 @@ const Breakfast = () => {
                   >
                     <Image
                       src={food}
+                      placeholder="blur"
+                      quality={100}
                       alt={`Food ${index + 1}`}
                       layout="fill"
                       className="rounded-full object-cover"
@@ -132,43 +136,43 @@ const Breakfast = () => {
           />
         </motion.div>
 
-
-
         <div className="flex space-x-2 md:hidden justify-center">
-            {[food1, food2, food3, food4].map((food, index) => {
-              const foodColors = [
-                ["#880808", "#A52A2A"],
-                ["#0A4669", "#0A3659"],
-                ["#953553", "#A95C68"],
-                ["#006666", "#003333"],
-              ];
-              const [bgColor, shapeColor] = foodColors[index];
-              return (
-                <div key={food} className="flex flex-col items-center">
-                  <div
-                    className={`relative w-20 h-20 md:w-28 md:h-28 cursor-pointer`}
-                    onClick={() => handleImageClick(food, bgColor, shapeColor)}
-                  >
-                    <Image
-                      src={food}
-                      alt={`Food ${index + 1}`}
-                      layout="fill"
-                      className="rounded-full object-cover"
-                    />
-                  </div>
-                  {selectedFood === food && (
-                    <motion.div
-                      className="w-16 md:w-24 h-1 bg-white mt-2 rounded"
-                      initial={{ opacity: 0, x: -50 }} // Start off-screen
-                      animate={{ opacity: 1, x: 0 }} // Animate to visible
-                      exit={{ opacity: 0, x: 50 }} // Animate out
-                      transition={{ duration: 0.5 }} // Duration of the animation
-                    />
-                  )}
+          {[food1, food2, food3, food4].map((food, index) => {
+            const foodColors = [
+              ["#880808", "#A52A2A"],
+              ["#0A4669", "#0A3659"],
+              ["#953553", "#A95C68"],
+              ["#006666", "#003333"],
+            ];
+            const [bgColor, shapeColor] = foodColors[index];
+            return (
+              <div key={food} className="flex flex-col items-center">
+                <div
+                  className={`relative w-20 h-20 md:w-28 md:h-28 cursor-pointer`}
+                  onClick={() => handleImageClick(food, bgColor, shapeColor)}
+                >
+                  <Image
+                    src={food}
+                    placeholder="blur"
+                    quality={100}
+                    alt={`Food ${index + 1}`}
+                    layout="fill"
+                    className="rounded-full object-cover"
+                  />
                 </div>
-              );
-            })}
-          </div>
+                {selectedFood === food && (
+                  <motion.div
+                    className="w-16 md:w-24 h-1 bg-white mt-2 rounded"
+                    initial={{ opacity: 0, x: -50 }} // Start off-screen
+                    animate={{ opacity: 1, x: 0 }} // Animate to visible
+                    exit={{ opacity: 0, x: 50 }} // Animate out
+                    transition={{ duration: 0.5 }} // Duration of the animation
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );

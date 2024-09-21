@@ -7,7 +7,9 @@ function DishCard({ image, title, rating, price }) {
       <div className="relative w-full h-48">
         <Image
           src={image}
-          alt={title}
+          alt={title} 
+          placeholder="blur"
+          quality={100}
           layout="fill"
           objectFit="cover"
           className="rounded-md"
